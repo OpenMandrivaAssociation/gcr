@@ -64,7 +64,6 @@ This package contains shared libraries for Gnome keyring.
 %package -n %{girname}
 Summary:        GObject Introspection interface description for Gcr
 Group:          System/Libraries
-Requires:       %{libname} = %{version}-%{release}
 
 %description -n %{girname}
 GObject Introspection interface description for Gcr.
@@ -72,7 +71,6 @@ GObject Introspection interface description for Gcr.
 %package -n %{girnamegck}
 Summary:        GObject Introspection interface description for Gck
 Group:          System/Libraries
-Requires:       %{libnamegck} = %{version}-%{release}
 
 %description -n %{girnamegck}
 GObject Introspection interface description for Gck.
