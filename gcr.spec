@@ -1,6 +1,4 @@
-# TODO:
-# - better descriptions
-# - more ?
+%define url_ver %(echo %{version}|cut -d. -f1,2)
 
 %define major_gck   0
 %define api_gck     1
@@ -8,28 +6,27 @@
 %define major_gcr   1
 %define api_gcr     3
 
-%define libname     %mklibname gcr %{api_gcr} %{major_gcr}
-%define libnamebase %mklibname gcr-base %{api_gcr} %{major_gcr}
-%define libnamegck  %mklibname gck %{api_gck} %{major_gck}
-%define girname     %mklibname gcr-gir %{major_gcr}
-%define girnamegck  %mklibname gck-gir %{major_gck}
-%define libnamedev  %mklibname -d gcr 
-
-%define url_ver %(echo %{version}|cut -d. -f1,2)
+%define libname		%mklibname gcr %{api_gcr} %{major_gcr}
+%define libnamebase	%mklibname gcr-base %{api_gcr} %{major_gcr}
+%define libnamegck	%mklibname gck %{api_gck} %{major_gck}
+%define girname		%mklibname gcr-gir %{major_gcr}
+%define girnamegck	%mklibname gck-gir %{major_gck}
+%define develname	%mklibname -d gcr 
 
 Summary:    A library for bits of crypto UI and parsing
 Name:       gcr
 Version:    3.4.1
-Release:    %mkrel 1
-Source0:    http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+Release:    1
 URL:        http://www.gnome.org/
 License:    GPLv2+ and LGPLv2+
 Group:      Networking/Remote access
+Source0:    http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+
 BuildRequires:  intltool
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libtasn1-tools
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
-BuildRequires:  pkgconfig(p11-kit-1) >= 0.6
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(p11-kit-1)
 BuildRequires:  pkgconfig(libtasn1)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 Conflicts:  gnome-keyring < 3.3.1
@@ -64,18 +61,6 @@ Summary:        Library for integration with the gnome keyring system
 %description -n %{libnamebase}
 This package contains shared libraries for Gnome keyring.
 
-%package -n %{libnamedev}
-Group:      Development/C
-Summary:    Development files and headers for %{name}
-Requires:   %{libname} = %{version}-%{release}
-#Requires:   %{libnamegck} = %{version}-%{release}
-#Requires:   %{libnamebase} = %{version}-%{release}
-#Provides:   libgcr-devel = %{version}-%{release}
-Conflicts:  %{_lib}-gnome-keyring-devel < 2.29.4
-
-%description -n %{libnamedev}
-Thi package contains the development files and headers for %{name}.
-
 %package -n %{girname}
 Summary:        GObject Introspection interface description for Gcr
 Group:          System/Libraries
@@ -92,6 +77,20 @@ Requires:       %{libnamegck} = %{version}-%{release}
 %description -n %{girnamegck}
 GObject Introspection interface description for Gck.
 
+%package -n %{develname}
+Group:      Development/C
+Summary:    Development files and headers for %{name}
+Requires:   %{libname} = %{version}-%{release}
+Requires:   %{libnamegck} = %{version}-%{release}
+Requires:   %{libnamebase} = %{version}-%{release}
+Requires:   %{girname} = %{version}-%{release}
+Requires:   %{girnamegck} = %{version}-%{release}
+Provides:   %{name}-devel = %{version}-%{release}
+Conflicts:  %{_lib}-gnome-keyring-devel < 2.29.4
+
+%description -n %{develname}
+Thi package contains the development files and headers for %{name}.
+
 %prep
 %setup -q
 %apply_patches
@@ -105,10 +104,7 @@ GObject Introspection interface description for Gck.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
-
-#we don't want these
 find %{buildroot} -name "*.la" -exec rm -rf {} \;
 
 %find_lang %{name}
@@ -143,7 +139,7 @@ find %{buildroot} -name "*.la" -exec rm -rf {} \;
 %files -n %{girname}
 %{_libdir}/girepository-1.0/Gcr-%{api_gcr}.typelib
 
-%files -n %{libnamedev}
+%files -n %{develname}
 %doc %{_datadir}/gtk-doc/html/*
 %{_libdir}/libgck-%{api_gck}.so
 %{_libdir}/libgcr-%{api_gcr}.so
