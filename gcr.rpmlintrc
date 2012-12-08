@@ -1,0 +1,3 @@
+# We're not actually a library package
+# The "library" rpmlint sees is a plugin
+addFilter("E: non-versioned-file-in-library-package")

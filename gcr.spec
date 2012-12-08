@@ -15,12 +15,13 @@
 
 Summary:    A library for bits of crypto UI and parsing
 Name:       gcr
-Version:    3.4.1
+Version:    3.6.2
 Release:    1
 URL:        http://www.gnome.org/
 License:    GPLv2+ and LGPLv2+
 Group:      Networking/Remote access
-Source0:    http://download.gnome.org/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+Source0:    http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+Source10:   %{name}.rpmlintrc
 
 BuildRequires:  intltool
 BuildRequires:  libgcrypt-devel
@@ -29,7 +30,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(p11-kit-1)
 BuildRequires:  pkgconfig(libtasn1)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-Conflicts:  gnome-keyring < 3.3.1
+#Conflicts:  gnome-keyring < 3.3.1
 
 %description
 A library for bits of crypto UI and parsing etc.
@@ -105,6 +106,8 @@ Thi package contains the development files and headers for %{name}.
 %makeinstall_std
 find %{buildroot} -name "*.la" -exec rm -rf {} \;
 
+rm -f %{buildroot}/%{_datadir}/glib-2.0/schemas/org.gnome.crypto.pgp*.xml
+
 %find_lang %{name}
 
 %files -f %{name}.lang
@@ -116,7 +119,7 @@ find %{buildroot} -name "*.la" -exec rm -rf {} \;
 %{_datadir}/dbus-1/services/org.gnome.keyring.PrivatePrompter.service
 %{_datadir}/dbus-1/services/org.gnome.keyring.SystemPrompter.service
 %{_datadir}/GConf/gsettings/org.gnome.crypto.pgp*.convert
-%{_datadir}/glib-2.0/schemas/org.gnome.crypto.pgp*.xml
+#%{_datadir}/glib-2.0/schemas/org.gnome.crypto.pgp*.xml
 %{_datadir}/applications/gcr-viewer.desktop
 %{_datadir}/applications/gcr-prompter.desktop
 %{_datadir}/mime/packages/gcr-crypto-types.xml
@@ -149,4 +152,15 @@ find %{buildroot} -name "*.la" -exec rm -rf {} \;
 %{_libdir}/pkgconfig/gcr-base-%{api_gcr}.pc
 %{_datadir}/gir-1.0/Gck-%{api_gck}.gir
 %{_datadir}/gir-1.0/Gcr-%{api_gcr}.gir
+
+%changelog
+* Fri Sep 28 2012 Arkady L. Shane <ashejn@rosalab.ru> 3.6.0-1
+- update to 3.6.0
+
+* Mon Aug 20 2012 Arkady L. Shane <ashejn@rosalab.ru> 3.4.1-2
+- temp drop C: gnome-keyring < 3.3.1
+
+* Sat Apr 28 2012 Guilherme Moro <guilherme@mandriva.com> 3.4.1-1
++ Revision: 794360
+- Created package structure for 'gcr'.
 

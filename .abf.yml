@@ -1,2 +1,3 @@
 sources:
-  "gcr-3.4.1.tar.xz:"	d7b9cadc8dec9f019c23ce72b5f797fb829005e1
+  "gcr-3.6.1.tar.xz:"	3ac8f3fa32ce99116cb0acdd77f864257f124086
+  gcr-3.6.2.tar.xz: 95ee30fb6424e13baa6ae53584ccd8b0cf4c9798
