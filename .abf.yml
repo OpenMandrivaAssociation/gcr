@@ -1,3 +1,4 @@
+removed_sources:
+  gcr-3.6.1.tar.xz: 3ac8f3fa32ce99116cb0acdd77f864257f124086
 sources:
-  "gcr-3.6.1.tar.xz:"	3ac8f3fa32ce99116cb0acdd77f864257f124086
   gcr-3.6.2.tar.xz: 95ee30fb6424e13baa6ae53584ccd8b0cf4c9798
