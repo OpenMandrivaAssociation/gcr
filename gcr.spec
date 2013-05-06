@@ -1,4 +1,5 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
+%define	Werror_cflags	%nil
 
 %define major_gck   0
 %define api_gck     1
@@ -6,6 +7,7 @@
 %define api_gcr     3
 %define libname		%mklibname gcr %{api_gcr} %{major_gcr}
 %define libnamebase	%mklibname gcr-base %{api_gcr} %{major_gcr}
+%define libnameui	%mklibname gcr-ui %{api_gcr} %{major_gcr}
 %define libnamegck	%mklibname gck %{api_gck} %{major_gck}
 %define girname		%mklibname gcr-gir %{major_gcr}
 %define girnamegck	%mklibname gck-gir %{major_gck}
@@ -13,7 +15,7 @@
 
 Summary:	A library for bits of crypto UI and parsing
 Name:		gcr
-Version:	3.6.2
+Version:	3.8.2
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
@@ -60,6 +62,13 @@ Summary:	Library for integration with the gnome keyring system
 %description -n %{libnamebase}
 This package contains shared libraries for Gnome keyring.
 
+%package -n %{libnameui}
+Group:	System/Libraries
+Summary:	Library for integration with the gnome keyring system
+
+%description -n %{libnameui}
+This package contains shared libraries for Gnome keyring.
+
 %package -n %{girname}
 Summary:	GObject Introspection interface description for Gcr
 Group:	System/Libraries
@@ -80,6 +89,7 @@ Summary:	Development files and headers for %{name}
 Requires:	%{libname} = %{version}-%{release}
 Requires:	%{libnamegck} = %{version}-%{release}
 Requires:	%{libnamebase} = %{version}-%{release}
+Requires:	%{libnameui} = %{version}-%{release}
 Requires:	%{girname} = %{version}-%{release}
 Requires:	%{girnamegck} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
@@ -112,7 +122,6 @@ rm -f %{buildroot}/%{_datadir}/glib-2.0/schemas/org.gnome.crypto.pgp*.xml
 %doc README NEWS
 %{_bindir}/gcr-viewer
 %{_libexecdir}/gcr-prompter
-%{_libdir}/libmock-test-module.so
 %{_datadir}/%{name}-%{api_gcr}/
 %{_datadir}/dbus-1/services/org.gnome.keyring.PrivatePrompter.service
 %{_datadir}/dbus-1/services/org.gnome.keyring.SystemPrompter.service
@@ -132,22 +141,29 @@ rm -f %{buildroot}/%{_datadir}/glib-2.0/schemas/org.gnome.crypto.pgp*.xml
 %files -n %{libnamebase}
 %{_libdir}/libgcr-base-%{api_gcr}.so.%{major_gcr}*
 
+%files -n %{libnameui}
+%{_libdir}/libgcr-ui-%{api_gcr}.so.%{major_gcr}*
+
 %files -n %{libname}
 %{_libdir}/libgcr-%{api_gcr}.so.%{major_gcr}*
 
 %files -n %{girname}
 %{_libdir}/girepository-1.0/Gcr-%{api_gcr}.typelib
+%{_libdir}/girepository-1.0/GcrUi-%{api_gcr}.typelib
 
 %files -n %{devname}
 %doc %{_datadir}/gtk-doc/html/*
 %{_libdir}/libgck-%{api_gck}.so
 %{_libdir}/libgcr-%{api_gcr}.so
+%{_libdir}/libgcr-ui-%{api_gcr}.so
 %{_libdir}/libgcr-base-%{api_gcr}.so
 %{_includedir}/gck-%{api_gck}
 %{_includedir}/gcr-%{api_gcr}
 %{_libdir}/pkgconfig/gck-%{api_gck}.pc
 %{_libdir}/pkgconfig/gcr-%{api_gcr}.pc
 %{_libdir}/pkgconfig/gcr-base-%{api_gcr}.pc
+%{_libdir}/pkgconfig/gcr-ui-%{api_gcr}.pc
 %{_datadir}/gir-1.0/Gck-%{api_gck}.gir
 %{_datadir}/gir-1.0/Gcr-%{api_gcr}.gir
+%{_datadir}/gir-1.0/GcrUi-%{api_gcr}.gir
 
