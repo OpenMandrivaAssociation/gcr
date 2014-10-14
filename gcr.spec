@@ -15,8 +15,8 @@
 
 Summary:	A library for bits of crypto UI and parsing
 Name:		gcr
-Version:	3.8.2
-Release:	7
+Version:	3.14.0
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		http://www.gnome.org/
@@ -103,7 +103,7 @@ Thi package contains the development files and headers for %{name}.
 %apply_patches
 
 %build
-%configure2_5x \
+%configure \
 	--disable-static \
 	--disable-update-mime \
 	--disable-schemas-compile \

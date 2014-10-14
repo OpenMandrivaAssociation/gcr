@@ -1,5 +1,6 @@
 removed_sources:
   gcr-3.6.1.tar.xz: 3ac8f3fa32ce99116cb0acdd77f864257f124086
   gcr-3.6.2.tar.xz: 95ee30fb6424e13baa6ae53584ccd8b0cf4c9798
-sources:
   gcr-3.8.2.tar.xz: 241acff88075bb6a8f7ee199c0e31ce6c768806e
+sources:
+  gcr-3.14.0.tar.xz: f7c33b8e2cb59269968afcf9aaf4f182db1c548e
