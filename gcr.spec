@@ -16,7 +16,7 @@
 Summary:	A library for bits of crypto UI and parsing
 Name:		gcr
 Version:	3.15.92
-Release:	2
+Release:	3
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		http://www.gnome.org/
