@@ -1,5 +1,6 @@
 %define url_ver %(echo %{version}|cut -d. -f1,2)
 %define	Werror_cflags	%nil
+%define _disable_rebuild_configure 1
 
 %define major_gck   0
 %define api_gck     1
@@ -15,7 +16,7 @@
 
 Summary:	A library for bits of crypto UI and parsing
 Name:		gcr
-Version:	3.15.92
+Version:	3.18.0
 Release:	3
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
@@ -106,6 +107,7 @@ Thi package contains the development files and headers for %{name}.
 %build
 %configure \
 	--disable-static \
+	--disable-vala \
 	--disable-update-mime \
 	--disable-schemas-compile \
 	--enable-introspection=yes
