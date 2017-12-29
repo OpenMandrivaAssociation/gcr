@@ -109,15 +109,15 @@ Thi package contains the development files and headers for %{name}.
 	--disable-static \
 	--disable-vala \
 	--disable-update-mime \
+	--enable-introspection=yes \
 	--disable-schemas-compile \
-	--enable-introspection=yes
-
+	--with-dbus-services=/usr/share/dbus-1/services
 %make
 
 %install
 %makeinstall_std
 
-rm -f %{buildroot}/%{_datadir}/glib-2.0/schemas/org.gnome.crypto.pgp*.xml
+#rm -f %{buildroot}/%{_datadir}/glib-2.0/schemas/org.gnome.crypto.pgp*.xml
 
 %find_lang %{name}
 
@@ -129,7 +129,7 @@ rm -f %{buildroot}/%{_datadir}/glib-2.0/schemas/org.gnome.crypto.pgp*.xml
 %{_datadir}/dbus-1/services/org.gnome.keyring.PrivatePrompter.service
 %{_datadir}/dbus-1/services/org.gnome.keyring.SystemPrompter.service
 %{_datadir}/GConf/gsettings/org.gnome.crypto.pgp*.convert
-#%{_datadir}/glib-2.0/schemas/org.gnome.crypto.pgp*.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.crypto.pgp*.xml
 %{_datadir}/applications/gcr-viewer.desktop
 %{_datadir}/applications/gcr-prompter.desktop
 %{_datadir}/mime/packages/gcr-crypto-types.xml
@@ -170,3 +170,8 @@ rm -f %{buildroot}/%{_datadir}/glib-2.0/schemas/org.gnome.crypto.pgp*.xml
 %{_datadir}/gir-1.0/Gcr-%{api_gcr}.gir
 %{_datadir}/gir-1.0/GcrUi-%{api_gcr}.gir
 
+%post
+/usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas
+
+%postun
+/usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas
