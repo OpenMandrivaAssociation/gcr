@@ -16,8 +16,8 @@
 
 Summary:	A library for bits of crypto UI and parsing
 Name:		gcr
-Version:	3.18.0
-Release:	3
+Version:	3.28.0
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		http://www.gnome.org/
@@ -107,7 +107,6 @@ Thi package contains the development files and headers for %{name}.
 %build
 %configure \
 	--disable-static \
-	--disable-vala \
 	--disable-update-mime \
 	--enable-introspection=yes \
 	--disable-schemas-compile \
@@ -125,7 +124,7 @@ Thi package contains the development files and headers for %{name}.
 %doc README NEWS
 %{_bindir}/gcr-viewer
 %{_libexecdir}/gcr-prompter
-%{_datadir}/%{name}-%{api_gcr}/
+%{_libexecdir}/gcr-ssh-askpass
 %{_datadir}/dbus-1/services/org.gnome.keyring.PrivatePrompter.service
 %{_datadir}/dbus-1/services/org.gnome.keyring.SystemPrompter.service
 %{_datadir}/GConf/gsettings/org.gnome.crypto.pgp*.convert
@@ -169,6 +168,7 @@ Thi package contains the development files and headers for %{name}.
 %{_datadir}/gir-1.0/Gck-%{api_gck}.gir
 %{_datadir}/gir-1.0/Gcr-%{api_gcr}.gir
 %{_datadir}/gir-1.0/GcrUi-%{api_gcr}.gir
+%{_datadir}/vala/vapi/*
 
 %post
 /usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas
