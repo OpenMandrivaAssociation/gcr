@@ -32,6 +32,7 @@ BuildRequires:	pkgconfig(p11-kit-1)
 BuildRequires:	pkgconfig(libtasn1)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	xsltproc
+BuildRequires:	vala-devel
 #Conflicts:	gnome-keyring < 3.3.1
 
 %description
@@ -110,7 +111,8 @@ Thi package contains the development files and headers for %{name}.
 	--disable-update-mime \
 	--enable-introspection=yes \
 	--disable-schemas-compile \
-	--with-dbus-services=/usr/share/dbus-1/services
+	--with-dbus-services=/usr/share/dbus-1/services \
+	--enable-vala
 %make
 
 %install
