@@ -16,8 +16,8 @@
 
 Summary:	A library for bits of crypto UI and parsing
 Name:		gcr
-Version:	3.28.0
-Release:	3
+Version:	3.28.1
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		http://www.gnome.org/
@@ -103,7 +103,6 @@ Thi package contains the development files and headers for %{name}.
 
 %prep
 %setup -q
-%apply_patches
 
 %build
 %configure \
@@ -113,10 +112,10 @@ Thi package contains the development files and headers for %{name}.
 	--disable-schemas-compile \
 	--with-dbus-services=/usr/share/dbus-1/services \
 	--enable-vala
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 #rm -f %{buildroot}/%{_datadir}/glib-2.0/schemas/org.gnome.crypto.pgp*.xml
 
