@@ -16,7 +16,7 @@
 
 Summary:	A library for bits of crypto UI and parsing
 Name:		gcr
-Version:	3.28.1
+Version:	3.34.0
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
