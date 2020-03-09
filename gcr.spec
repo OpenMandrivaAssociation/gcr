@@ -156,7 +156,7 @@ Thi package contains the development files and headers for %{name}.
 %files -n %{devname}
 %doc %{_datadir}/gtk-doc/html/*
 %{_libdir}/libgck-%{api_gck}.so
-%{_libdir}/libgcr-%{api_gcr}.so
+#%{_libdir}/libgcr-%{api_gcr}.so
 %{_libdir}/libgcr-ui-%{api_gcr}.so
 %{_libdir}/libgcr-base-%{api_gcr}.so
 %{_includedir}/gck-%{api_gck}
