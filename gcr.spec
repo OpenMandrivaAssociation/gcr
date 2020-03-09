@@ -28,6 +28,8 @@ BuildRequires:  meson
 BuildRequires:	intltool
 BuildRequires:	libgcrypt-devel
 BuildRequires:	libtasn1-tools
+BuildRequires:	gnupg2
+BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(p11-kit-1)
 BuildRequires:	pkgconfig(libtasn1)
