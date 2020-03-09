@@ -24,6 +24,7 @@ Url:		http://www.gnome.org/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 Source10:	%{name}.rpmlintrc
 
+BuildRequires:  meson
 BuildRequires:	intltool
 BuildRequires:	libgcrypt-devel
 BuildRequires:	libtasn1-tools
@@ -105,17 +106,13 @@ Thi package contains the development files and headers for %{name}.
 %setup -q
 
 %build
-%configure \
-	--disable-static \
-	--disable-update-mime \
-	--enable-introspection=yes \
-	--disable-schemas-compile \
-	--with-dbus-services=/usr/share/dbus-1/services \
-	--enable-vala
-%make_build
+
+%meson
+
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 #rm -f %{buildroot}/%{_datadir}/glib-2.0/schemas/org.gnome.crypto.pgp*.xml
 
