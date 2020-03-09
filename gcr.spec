@@ -16,7 +16,7 @@
 
 Summary:	A library for bits of crypto UI and parsing
 Name:		gcr
-Version:	3.34.0
+Version:	3.35.91
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
@@ -24,9 +24,12 @@ Url:		http://www.gnome.org/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 Source10:	%{name}.rpmlintrc
 
+BuildRequires:  meson
 BuildRequires:	intltool
 BuildRequires:	libgcrypt-devel
 BuildRequires:	libtasn1-tools
+BuildRequires:	gnupg2
+BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(p11-kit-1)
 BuildRequires:	pkgconfig(libtasn1)
@@ -105,17 +108,13 @@ Thi package contains the development files and headers for %{name}.
 %setup -q
 
 %build
-%configure \
-	--disable-static \
-	--disable-update-mime \
-	--enable-introspection=yes \
-	--disable-schemas-compile \
-	--with-dbus-services=/usr/share/dbus-1/services \
-	--enable-vala
-%make_build
+
+%meson
+
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 #rm -f %{buildroot}/%{_datadir}/glib-2.0/schemas/org.gnome.crypto.pgp*.xml
 
@@ -148,7 +147,7 @@ Thi package contains the development files and headers for %{name}.
 %{_libdir}/libgcr-ui-%{api_gcr}.so.%{major_gcr}*
 
 %files -n %{libname}
-%{_libdir}/libgcr-%{api_gcr}.so.%{major_gcr}*
+#%{_libdir}/libgcr-%{api_gcr}.so.%{major_gcr}*
 
 %files -n %{girname}
 %{_libdir}/girepository-1.0/Gcr-%{api_gcr}.typelib
@@ -157,7 +156,7 @@ Thi package contains the development files and headers for %{name}.
 %files -n %{devname}
 %doc %{_datadir}/gtk-doc/html/*
 %{_libdir}/libgck-%{api_gck}.so
-%{_libdir}/libgcr-%{api_gcr}.so
+#%{_libdir}/libgcr-%{api_gcr}.so
 %{_libdir}/libgcr-ui-%{api_gcr}.so
 %{_libdir}/libgcr-base-%{api_gcr}.so
 %{_includedir}/gck-%{api_gck}
