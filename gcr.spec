@@ -26,7 +26,7 @@ Source10:	%{name}.rpmlintrc
 
 BuildRequires:  meson
 BuildRequires:	intltool
-BuildRequires:	libgcrypt-devel
+BuildRequires:	pkgconfig(libgcrypt)
 BuildRequires:	libtasn1-tools
 BuildRequires:	gnupg2
 BuildRequires:  pkgconfig(gtk-doc)
