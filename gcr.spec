@@ -16,7 +16,7 @@
 
 Summary:	A library for bits of crypto UI and parsing
 Name:		gcr
-Version:	3.38.1
+Version:	3.40.0
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
@@ -121,7 +121,7 @@ Thi package contains the development files and headers for %{name}.
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc README NEWS
+%doc README.md NEWS
 %{_bindir}/gcr-viewer
 %{_libexecdir}/gcr-prompter
 %{_libexecdir}/gcr-ssh-askpass
