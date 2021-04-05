@@ -121,7 +121,7 @@ Thi package contains the development files and headers for %{name}.
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc README NEWS
+%doc README.md NEWS
 %{_bindir}/gcr-viewer
 %{_libexecdir}/gcr-prompter
 %{_libexecdir}/gcr-ssh-askpass
