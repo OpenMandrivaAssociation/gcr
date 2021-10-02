@@ -33,6 +33,7 @@ BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(p11-kit-1)
 BuildRequires:	pkgconfig(libtasn1)
+BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:	pkgconfig(gobject-introspection-1.0)
 BuildRequires:	xsltproc
 BuildRequires:	vala-devel
