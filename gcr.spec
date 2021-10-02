@@ -128,6 +128,7 @@ Thi package contains the development files and headers for %{name}.
 %{_bindir}/gcr-viewer
 %{_libexecdir}/gcr-prompter
 %{_libexecdir}/gcr-ssh-askpass
+%{_libexecdir}/gcr-ssh-agent
 %{_datadir}/dbus-1/services/org.gnome.keyring.PrivatePrompter.service
 %{_datadir}/dbus-1/services/org.gnome.keyring.SystemPrompter.service
 %{_datadir}/GConf/gsettings/org.gnome.crypto.pgp*.convert
@@ -136,6 +137,8 @@ Thi package contains the development files and headers for %{name}.
 %{_datadir}/applications/gcr-prompter.desktop
 %{_datadir}/mime/packages/gcr-crypto-types.xml
 %{_datadir}/icons/hicolor/*/apps/gcr*.png
+%{_userunitdir}/gcr-ssh-agent.service
+%{_userunitdir}/gcr-ssh-agent.socket
 
 %files -n %{libnamegck}
 %{_libdir}/libgck-%{api_gck}.so.%{major_gck}*
