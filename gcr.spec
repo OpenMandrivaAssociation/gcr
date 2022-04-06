@@ -24,6 +24,8 @@ Url:		http://www.gnome.org/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 Source10:	%{name}.rpmlintrc
 
+Patch0:   https://gitlab.gnome.org/GNOME/gcr/-/commit/b3ca1d02bb0148ca787ac4aead164d7c8ce2c4d8.patch
+
 BuildRequires:  meson
 BuildRequires:	intltool
 BuildRequires:	pkgconfig(libgcrypt)
@@ -108,7 +110,7 @@ Conflicts:	%{_lib}-gnome-keyring-devel < 2.29.4
 Thi package contains the development files and headers for %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 
