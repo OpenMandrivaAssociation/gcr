@@ -16,15 +16,13 @@
 
 Summary:	A library for bits of crypto UI and parsing
 Name:		gcr
-Version:	3.41.0
-Release:	2
+Version:	3.41.1
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Networking/Remote access
 Url:		http://www.gnome.org/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 Source10:	%{name}.rpmlintrc
-
-Patch0:   https://gitlab.gnome.org/GNOME/gcr/-/commit/b3ca1d02bb0148ca787ac4aead164d7c8ce2c4d8.patch
 
 BuildRequires:  meson
 BuildRequires:	intltool
